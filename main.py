@@ -1,11 +1,7 @@
 from selenium import webdriver
-from dotenv import load_dotenv
-
-load_dotenv()
-WEBDRIVER_FILEPATH = os.getenv('WEBDRIVER_FILEPATH')
-website = "http://localhost:5555/"
-
-driver = webdriver.Chrome(WEBDRIVER_FILEPATH)
-driver.get(website)
-result = requests.get(website)
-
+from selenium.webdriver.chrome.options import Options
+chrome_options = Options()
+chrome_options.add_experimental_option("detach", True)
+websites = ["http://localhost:5555/","https://expressjs.com/en/5x/api.html#req"]
+browser = webdriver.Chrome(options=chrome_options)
+browser.get(websites[0])
